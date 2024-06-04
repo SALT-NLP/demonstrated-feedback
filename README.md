@@ -1,6 +1,6 @@
 ## Show, Don't Tell: Aligning Language Models with Demonstrated Feedback
 
-This repository contains source code for the paper **Show, Don't Tell: Aligning Language Models with Demonstrated Feedback** by [Omar Shaikh](https://oshaikh.com/), [Joey Hejna](http://joeyhejna.com/), [Michelle Lam](https://michelle123lam.github.io/), [Yijia Shao](https://cs.stanford.edu/~shaoyj/), [Michael Bernstein](https://hci.stanford.edu/msb/), and [Diyi Yang](https://cs.stanford.edu/~diyiy/). Feel free to reach out to [Omar Shaikh](https://oshaikh.com/) with any questions!
+This repository contains source code for the paper **Show, Don't Tell: Aligning Language Models with Demonstrated Feedback** by [Omar Shaikh](https://oshaikh.com/), [Michelle Lam](https://michelle123lam.github.io/), [Joey Hejna](http://joeyhejna.com/), [Yijia Shao](https://cs.stanford.edu/~shaoyj/), [Michael Bernstein](https://hci.stanford.edu/msb/), and [Diyi Yang](https://cs.stanford.edu/~diyiy/). Feel free to reach out to [Omar Shaikh](https://oshaikh.com/) with any questions!
 
 [[Paper]](https://arxiv.org/abs/2406.00888)
 
