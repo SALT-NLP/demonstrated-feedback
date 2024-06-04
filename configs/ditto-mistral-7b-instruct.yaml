@@ -1,0 +1,61 @@
+# Model arguments
+model_name_or_path: mistralai/Mistral-7B-Instruct-v0.2
+torch_dtype: bfloat16
+
+# some kinda dumb bug isn't letting me do this:
+# https://github.com/huggingface/transformers/issues/30019
+use_flash_attention_2: false
+
+# Data training arguments
+preprocessing_num_workers: 1
+
+# DPOTrainer arguments
+bf16: true
+do_eval: false
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+log_level: info
+logging_steps: 1
+
+max_length: 2048
+max_prompt_length: 512
+
+per_device_train_batch_size: 4
+push_to_hub: false
+seed: 42
+
+use_peft: true
+lora_r: 32
+lora_alpha: 64
+lora_dropout: 0.05
+lora_target_modules:
+- q_proj
+- k_proj
+- v_proj
+- o_proj
+
+learning_rate: 3.0e-5
+max_steps: 30
+lr_scheduler_type: cosine
+warmup_ratio: 0.2
+
+# if a batch gets < 1.00 loss, let's stop
+sft_stop_loss: 1.00
+
+ditto_learning_rate: 1.0e-6
+ditto_max_steps: 40
+ditto_lr_scheduler_type: constant_with_warmup
+ditto_warmup_ratio: 0.25
+
+# effective batch size is approx 8 * 3, might be less in earlier iterations
+ditto_per_device_train_batch_size: 8
+rescale_batch: 3
+
+remove_unused_columns: true
+beta: 0.05
+
+frac_expert: 0.7
+frac_replay: 0.2
+frac_noisy: 0.1
+
