@@ -6,22 +6,7 @@ import pickle
 import pdb
 import argparse
 
-model_id = "mistralai/Mistral-7B-Instruct-v0.2"
-
-base_model = AutoModelForCausalLM.from_pretrained(
-    model_id,
-).to("cuda")
-
-tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2")
-
-base_model = PeftModel.from_pretrained(
-    base_model, "./outputs/custom-mistral-7b-instruct-ditto/ditto"
-)
-
-base_model.eval()
-
 MISTRAL_CHAT_TEMPLATE = "{{ bos_token }}{% if messages[0]['role'] == 'system' %}{% set loop_messages = messages[1:] %}{% set system_message = messages[0]['content'].strip() + '\n\n' %}{% else %}{% set loop_messages = messages %}{% set system_message = '' %}{% endif %}{% for message in loop_messages %}{% if loop.index0 == 0 %}{% set content = system_message + message['content'] %}{% else %}{% set content = message['content'] %}{% endif %}{% if message['role'] == 'user' %}{{ '[INST] ' + content.strip() + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ ' '  + content.strip() + ' ' + eos_token }}{% endif %}{% endfor %}"
-
 
 def main():
     parser = argparse.ArgumentParser(description="GPT gen script")
@@ -37,6 +22,20 @@ def main():
     # Execute the parse_args() method
     args = parser.parse_args()
 
+    model_id = "mistralai/Mistral-7B-Instruct-v0.2"
+    
+    base_model = AutoModelForCausalLM.from_pretrained(
+        model_id,
+    ).to("cuda")
+    
+    tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.2")
+    
+    base_model = PeftModel.from_pretrained(
+        base_model, f"./outputs/{args.benchmark}-mistral-7b-instruct-ditto/ditto"
+    )
+    
+    base_model.eval()
+    
     generator = pipeline(
         "text-generation",
         model=base_model,
@@ -46,7 +45,7 @@ def main():
     
     generator.tokenizer.chat_template = MISTRAL_CHAT_TEMPLATE
 
-    path = f"./benchmarks/custom/processed/{args.benchmark}_test.pkl"
+    path = f"./benchmarks/{args.benchmark}/processed/{args.benchmark}_test.pkl"
     
     with open(path, 'rb') as pickle_file:
         data = pickle.load(pickle_file)
