@@ -23,7 +23,7 @@ Next, install PyTorch `v2.1.2`. We used the following.
 conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
 
-Finally, install the alignment handbook dependencies.
+Then, install the alignment handbook dependencies.
 
 ```shell
 git clone https://github.com/huggingface/alignment-handbook.git
@@ -31,11 +31,22 @@ cd ./alignment-handbook/
 python -m pip install .
 ```
 
+Lastly, install the requirements for this repo to avoid errors due to updates in packages. 
+
+```shell 
+pip install -r requirements.txt
+```
+
 A sample shell script with training + generation is in run.sh (trains Mistral Instruct v0.2 7B). Right now, it's set to finetune on email examples. The shell script has an argument for trying different datasets in the paper. Note that you may need to change the config files for your specific hardware or dataset.
 
 ```shell 
 bash run.sh
 ```
+
+### Debugging
+
+* `AttributeError: 'DittoConfig' object has no attribute 'packing'`: revert to older version of trl (`trl==0.8.6`) in `requirements.txt`. 
+
 
 ### *How do I cite this work?* 
 
