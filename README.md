@@ -28,6 +28,7 @@ Then, install the alignment handbook dependencies.
 ```shell
 git clone https://github.com/huggingface/alignment-handbook.git
 cd ./alignment-handbook/
+git checkout 606d2e954fd17999af40e6fb4f712055ca11b2f0
 python -m pip install .
 ```
 
