@@ -1,8 +1,6 @@
-## Show, Don't Tell: Aligning Language Models with Demonstrated Feedback
+## Aligning Language Models with Demonstrated Feedback
 
-This repository contains source code for the paper **Show, Don't Tell: Aligning Language Models with Demonstrated Feedback** by [Omar Shaikh](https://oshaikh.com/), [Michelle Lam](https://michelle123lam.github.io/), [Joey Hejna](http://joeyhejna.com/), [Yijia Shao](https://cs.stanford.edu/~shaoyj/), [Michael Bernstein](https://hci.stanford.edu/msb/), and [Diyi Yang](https://cs.stanford.edu/~diyiy/). Feel free to reach out to [Omar Shaikh](https://oshaikh.com/) with any questions!
-
-[[Paper]](https://arxiv.org/abs/2406.00888)
+This repository contains source code for the paper **Aligning Language Models with Demonstrated Feedback**
 
 ### *Abstract* 
 
@@ -47,22 +45,4 @@ bash run.sh
 ### Debugging
 
 * `AttributeError: 'DittoConfig' object has no attribute 'packing'`: revert to older version of trl (`trl==0.8.6`) in `requirements.txt`. 
-
-
-### *How do I cite this work?* 
-
-Feel free to use the following BibTeX entry.
-
-**BibTeX:**
-
-```tex
-@misc{shaikh2024show,
-      title={Show, Don't Tell: Aligning Language Models with Demonstrated Feedback}, 
-      author={Omar Shaikh and Michelle Lam and Joey Hejna and Yijia Shao and Michael Bernstein and Diyi Yang},
-      year={2024},
-      eprint={2406.00888},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
-}
-```
 
